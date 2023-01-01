@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 const NewBoxForm = ({ addBox }) => {
 	const INITAL_FORM_STATE = {
+		id: uuid(),
 		height: '',
 		width: '',
 		color: ''
@@ -19,7 +21,6 @@ const NewBoxForm = ({ addBox }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
 		addBox({ ...formData });
 		setFormData(INITAL_FORM_STATE);
 	};
@@ -40,7 +41,7 @@ const NewBoxForm = ({ addBox }) => {
 				id="height"
 				type="text"
 				name="height"
-				placeholder="Height"
+				placeholder="Height in px"
 				onChange={handleChange}
 				value={formData.height}
 			/>
@@ -49,7 +50,7 @@ const NewBoxForm = ({ addBox }) => {
 				id="width"
 				type="text"
 				name="width"
-				placeholder="Width"
+				placeholder="Width in px"
 				onChange={handleChange}
 				value={formData.width}
 			/>
